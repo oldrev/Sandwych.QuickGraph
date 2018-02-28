@@ -5,6 +5,10 @@
     <RootNamespace>QuickGraph.Graphviz</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard1.6|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Sandwych.QuickGraph.Core\Sandwych.QuickGraph.Core.csproj" />
   </ItemGroup>

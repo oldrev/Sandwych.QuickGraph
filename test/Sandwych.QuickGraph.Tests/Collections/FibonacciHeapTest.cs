@@ -134,11 +134,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated: {0} > {1}", lastValue, value.Key);
-                    //FIXME TODO
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -163,11 +159,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue < value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated");
-                    //FIXME TODO
-                }
+                Assert.False(lastValue < value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -193,11 +185,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated");
-                    //FIXME TODO
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -223,11 +211,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated");
-                    // TODO FIXME
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -253,11 +237,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue < value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated");
-                    // TODO FIXME
-                }
+                Assert.False(lastValue < value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -313,10 +293,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue < value.Key)
-                {
-                    // TODO FIXME Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue < value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -346,10 +323,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    // TODO FIXME Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -379,10 +353,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    // Assert.Fail("Heap condition has been violated: {0} > {1}", lastValue, value.Key);
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -436,10 +407,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    //Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -466,10 +434,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    //TODO FIXME Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -508,10 +473,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    //TODO FIXME Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }
@@ -550,10 +512,7 @@ namespace QuickGraph.Tests.Collections
                 {
                     lastValue = value.Key;
                 }
-                if (lastValue > value.Key)
-                {
-                    //TODO FIXME Assert.Fail("Heap condition has been violated");
-                }
+                Assert.False(lastValue > value.Key);
                 lastValue = value.Key;
                 count--;
             }

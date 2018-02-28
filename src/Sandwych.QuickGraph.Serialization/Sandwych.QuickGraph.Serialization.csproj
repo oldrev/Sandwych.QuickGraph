@@ -5,6 +5,10 @@
     <RootNamespace>QuickGraph.Serialization</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Remove="graphml-structure.xsd" />
     <None Remove="graphml.dtd" />
