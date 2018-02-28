@@ -3,7 +3,7 @@
 
 Generic Graph Data Structures and Algorithms for .NET
 
-Sandwych.QuickGraph is a port of QuickGraph to .NET Standard 1.6+.
+Sandwych.QuickGraph is a port of the original QuickGraph project to .NET Standard 1.6+.
 
 QuickGraph provides generic directed/undirected graph datastructures and algorithms for .NET. QuickGraph comes with algorithms such as depth first seach, breath first search, A* search, shortest path, k-shortest path, maximum flow, minimum spanning tree, least common ancestors, etc... QuickGraph supports MSAGL, GLEE, and Graphviz to render the graphs, serialization to GraphML, etc...
 
@@ -33,6 +33,10 @@ var graph = ds.ToGraph();  // wraps the dataset into a DataSetGraph
 foreach(DataTable table in graph.TopologicalSort()) // applies a topological sort to the dataset graph
     Console.WriteLine(table.TableName); // in which order should we delete the tables?
 ```
+
+# License
+
+Sandwych.QuickGraph is licensed to the MS-PL License. More details please see the `LICENSE.md` file.
 
 # History
 
