@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace QuickGraph
@@ -11,16 +12,19 @@ namespace QuickGraph
         const Int64 FNV1_prime_64 = 1099511628211;
         const Int64 FNV1_basis_64 = unchecked((int)14695981039346656037);
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int32 GetHashCode(Int64 x)
         {
             return Combine((Int32)x, (Int32)(((UInt64)x) >> 32));
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static Int32 Fold(Int32 hash, byte value)
         {
             return (hash * FNV1_prime_32) ^ (Int32)value;
         }
 
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         private static Int32 Fold(Int32 hash, Int32 value)
         {
             return Fold(Fold(Fold(Fold(hash,
@@ -36,6 +40,7 @@ namespace QuickGraph
         /// <param name="x"></param>
         /// <param name="y"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int32 Combine(Int32 x, Int32 y)
         {
             return Fold(Fold(FNV1_basis_32, x), y);
@@ -48,6 +53,7 @@ namespace QuickGraph
         /// <param name="y"></param>
         /// <param name="z"></param>
         /// <returns></returns>
+        [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static Int32 Combine(Int32 x, Int32 y, Int32 z)
         {
             return Fold(Fold(Fold(FNV1_basis_32, x), y), z);
