@@ -15,7 +15,7 @@ namespace QuickGraph
 #endif
     [StructLayout(LayoutKind.Auto)]
     [DebuggerDisplay("{Source}<-{Target}")]
-    public struct SReversedEdge<TVertex, TEdge> 
+    public readonly struct SReversedEdge<TVertex, TEdge>
         : IEdge<TVertex>
         , IEquatable<SReversedEdge<TVertex, TEdge>>
         where TEdge : IEdge<TVertex>
@@ -42,7 +42,7 @@ namespace QuickGraph
         {
             get { return this.OriginalEdge.Source; }
         }
-        
+
         [Pure]
         public override bool Equals(object obj)
         {

@@ -30,7 +30,7 @@ namespace QuickGraph
 #if !SILVERLIGHT
         [Serializable]
 #endif
-        struct InOutEdges
+        readonly struct InOutEdges
         {
             private readonly TEdge[] _outEdges;
             private readonly TEdge[] _inEdges;

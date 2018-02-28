@@ -27,7 +27,7 @@ namespace QuickGraph
 #if !SILVERLIGHT
         [Serializable]
 #endif
-        struct Range
+        readonly struct Range
         {
             public readonly int Start;
             public readonly int End;

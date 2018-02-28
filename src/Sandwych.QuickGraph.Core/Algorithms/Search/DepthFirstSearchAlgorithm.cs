@@ -241,7 +241,7 @@ namespace QuickGraph.Algorithms.Search
 			}
 		}
 
-        struct SearchFrame
+        readonly struct SearchFrame
         {
             public readonly TVertex Vertex;
             public readonly IEnumerator<TEdge> Edges;

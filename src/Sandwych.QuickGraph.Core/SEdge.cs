@@ -14,7 +14,7 @@ namespace QuickGraph
 #endif
     [DebuggerDisplay(EdgeExtensions.DebuggerDisplayEdgeFormatString)]
     [StructLayout(LayoutKind.Auto)]
-    public struct SEdge<TVertex>
+    public readonly struct SEdge<TVertex>
         : IEdge<TVertex>
     {
         private readonly TVertex source;

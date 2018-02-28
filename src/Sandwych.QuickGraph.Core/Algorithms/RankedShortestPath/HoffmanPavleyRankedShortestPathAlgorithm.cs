@@ -314,7 +314,7 @@ namespace QuickGraph.Algorithms.RankedShortestPath
         }
 
         [DebuggerDisplay("Weight = {Weight}, Index = {DeviationIndex}, Edge = {DeviationEdge}")]
-        struct DeviationPath
+        readonly struct DeviationPath
         {
             public readonly TEdge[] ParentPath;
             public readonly int DeviationIndex;

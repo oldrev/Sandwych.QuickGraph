@@ -218,7 +218,7 @@ namespace QuickGraph.Collections
         public int Count { get { return count; } }
         //Draws the current heap in a string.  Marked Nodes have a * Next to them
 
-        struct NodeLevel
+        readonly struct NodeLevel
         {
             public readonly FibonacciHeapCell<TPriority, TValue> Node;
             public readonly int Level;

@@ -5,7 +5,7 @@ using System.Diagnostics.Contracts;
 
 namespace QuickGraph.Graphviz.Dot
 {
-    public struct GraphvizColor
+    public readonly struct GraphvizColor
         : IEquatable<GraphvizColor>
     {
         readonly byte a;

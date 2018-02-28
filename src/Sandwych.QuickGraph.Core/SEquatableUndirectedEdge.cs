@@ -15,7 +15,7 @@ namespace QuickGraph
 #endif
     [DebuggerDisplay(EdgeExtensions.DebuggerDisplayUndirectedEdgeFormatString)]
     [StructLayout(LayoutKind.Auto)]
-    public struct SEquatableUndirectedEdge<TVertex>
+    public readonly struct SEquatableUndirectedEdge<TVertex>
         : IUndirectedEdge<TVertex>
         , IEquatable<SEquatableUndirectedEdge<TVertex>>
     {

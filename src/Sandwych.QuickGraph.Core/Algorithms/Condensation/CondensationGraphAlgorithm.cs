@@ -117,7 +117,7 @@ namespace QuickGraph.Algorithms.Condensation
             return componentAlgorithm.ComponentCount;
         }
 
-        struct EdgeKey 
+        readonly struct EdgeKey 
             : IEquatable<EdgeKey>
         {
             readonly int SourceID;

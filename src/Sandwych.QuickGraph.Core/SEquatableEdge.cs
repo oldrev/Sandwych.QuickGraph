@@ -14,7 +14,7 @@ namespace QuickGraph
 #endif
     [DebuggerDisplay(EdgeExtensions.DebuggerDisplayEdgeFormatString)]
     [StructLayout(LayoutKind.Auto)]
-    public struct SEquatableEdge<TVertex>
+    public readonly struct SEquatableEdge<TVertex>
         : IEdge<TVertex>
         , IEquatable<SEquatableEdge<TVertex>>
     {

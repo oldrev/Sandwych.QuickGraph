@@ -6,7 +6,7 @@ using System.ComponentModel;
 
 namespace QuickGraph.Serialization
 {
-    internal struct PropertySerializationInfo
+    internal readonly struct PropertySerializationInfo
     {
         public readonly PropertyInfo Property;
         public readonly string Name;

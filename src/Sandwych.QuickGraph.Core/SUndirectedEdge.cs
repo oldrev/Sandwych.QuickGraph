@@ -15,7 +15,7 @@ namespace QuickGraph
 #endif
     [DebuggerDisplay(EdgeExtensions.DebuggerDisplayUndirectedEdgeFormatString)]
     [StructLayout(LayoutKind.Auto)]
-    public struct SUndirectedEdge<TVertex>
+    public readonly struct SUndirectedEdge<TVertex>
         : IUndirectedEdge<TVertex>
     {
         private readonly TVertex source;

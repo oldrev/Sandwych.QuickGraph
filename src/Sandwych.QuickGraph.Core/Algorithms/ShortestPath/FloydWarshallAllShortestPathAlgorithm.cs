@@ -22,7 +22,7 @@ namespace QuickGraph.Algorithms.ShortestPath
         private readonly IDistanceRelaxer distanceRelaxer;
         private readonly Dictionary<SEquatableEdge<TVertex>, VertexData> data;
 
-        struct VertexData
+        readonly struct VertexData
         {
             public readonly double Distance;
             readonly TVertex _predecessor;

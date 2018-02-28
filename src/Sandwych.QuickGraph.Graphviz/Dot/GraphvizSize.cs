@@ -8,7 +8,7 @@ using System.Diagnostics.Contracts;
 namespace QuickGraph.Graphviz.Dot
 {
     [DebuggerDisplay("{Width}x{Height}")]
-    public struct GraphvizSizeF
+    public readonly struct GraphvizSizeF
     {
         readonly float height;
         readonly float width;
