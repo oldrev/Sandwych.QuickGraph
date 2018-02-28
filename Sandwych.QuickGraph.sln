@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{0A18F508-E6C9-4A71-8207-BE6A5985EBE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{6D3A7FB1-B030-4656-BE2E-E33A4AFF5BED}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwych.QuickGraph.Core", "src\Sandwych.QuickGraph.Core\Sandwych.QuickGraph.Core.csproj", "{C8F2A778-BA54-497B-999D-353959B55E61}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwych.QuickGraph.Data", "src\Sandwych.QuickGraph.Data\Sandwych.QuickGraph.Data.csproj", "{D935DD7E-1D3A-4029-AEDC-5D34E6185069}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwych.QuickGraph.Graphviz", "src\Sandwych.QuickGraph.Graphviz\Sandwych.QuickGraph.Graphviz.csproj", "{68B35318-5D34-4314-8F86-AF602F70F14E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sandwych.QuickGraph.Serialization", "src\Sandwych.QuickGraph.Serialization\Sandwych.QuickGraph.Serialization.csproj", "{5D878F06-F141-4162-B26E-2189C694E33A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sandwych.QuickGraph.Tests", "test\Sandwych.QuickGraph.Tests\Sandwych.QuickGraph.Tests.csproj", "{2D5B9585-385C-472A-B26A-91715F9FEFA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8F2A778-BA54-497B-999D-353959B55E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8F2A778-BA54-497B-999D-353959B55E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8F2A778-BA54-497B-999D-353959B55E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8F2A778-BA54-497B-999D-353959B55E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D935DD7E-1D3A-4029-AEDC-5D34E6185069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D935DD7E-1D3A-4029-AEDC-5D34E6185069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D935DD7E-1D3A-4029-AEDC-5D34E6185069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D935DD7E-1D3A-4029-AEDC-5D34E6185069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68B35318-5D34-4314-8F86-AF602F70F14E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68B35318-5D34-4314-8F86-AF602F70F14E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68B35318-5D34-4314-8F86-AF602F70F14E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68B35318-5D34-4314-8F86-AF602F70F14E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D878F06-F141-4162-B26E-2189C694E33A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D878F06-F141-4162-B26E-2189C694E33A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D878F06-F141-4162-B26E-2189C694E33A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D878F06-F141-4162-B26E-2189C694E33A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D5B9585-385C-472A-B26A-91715F9FEFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D5B9585-385C-472A-B26A-91715F9FEFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D5B9585-385C-472A-B26A-91715F9FEFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D5B9585-385C-472A-B26A-91715F9FEFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C8F2A778-BA54-497B-999D-353959B55E61} = {0A18F508-E6C9-4A71-8207-BE6A5985EBE4}
+		{D935DD7E-1D3A-4029-AEDC-5D34E6185069} = {0A18F508-E6C9-4A71-8207-BE6A5985EBE4}
+		{68B35318-5D34-4314-8F86-AF602F70F14E} = {0A18F508-E6C9-4A71-8207-BE6A5985EBE4}
+		{5D878F06-F141-4162-B26E-2189C694E33A} = {0A18F508-E6C9-4A71-8207-BE6A5985EBE4}
+		{2D5B9585-385C-472A-B26A-91715F9FEFA2} = {6D3A7FB1-B030-4656-BE2E-E33A4AFF5BED}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5058BE46-BF16-496D-BB47-3988DAF32A08}
+	EndGlobalSection
+EndGlobal

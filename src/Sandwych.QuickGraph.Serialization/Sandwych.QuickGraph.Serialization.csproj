@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;net45</TargetFrameworks>
+    <RootNamespace>QuickGraph.Serialization</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="graphml-structure.xsd" />
+    <None Remove="graphml.dtd" />
+    <None Remove="graphml.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="graphml-structure.xsd" />
+    <EmbeddedResource Include="graphml.dtd" />
+    <EmbeddedResource Include="graphml.xsd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sandwych.QuickGraph.Core\Sandwych.QuickGraph.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="System.Reflection.Emit.Lightweight" Version="4.3.0" />
+  </ItemGroup>
+
+</Project>

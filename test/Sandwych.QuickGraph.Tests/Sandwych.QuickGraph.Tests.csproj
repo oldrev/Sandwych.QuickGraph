@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <EnableDefaultContentItems>false</EnableDefaultContentItems>
+    <RootNamespace>QuickGraph</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.5.0" />
+    <PackageReference Include="xunit" Version="2.3.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.3.1" />
+    <DotNetCliToolReference Include="dotnet-xunit" Version="2.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Sandwych.QuickGraph.Core\Sandwych.QuickGraph.Core.csproj" />
+    <ProjectReference Include="..\..\src\Sandwych.QuickGraph.Graphviz\Sandwych.QuickGraph.Graphviz.csproj" />
+    <ProjectReference Include="..\..\src\Sandwych.QuickGraph.Serialization\Sandwych.QuickGraph.Serialization.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="./graphml/**/*" Link="graphml/%(RecursiveDir)%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+</Project>
