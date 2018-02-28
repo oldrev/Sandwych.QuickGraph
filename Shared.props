@@ -1,7 +1,7 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
-    <Copyright>Copyright &copy; Jonathan "Peli" de Halleux</Copyright>
+    <Copyright>Copyright (C) Jonathan "Peli" de Halleux</Copyright>
     <Authors>Peli de Halleux, Wei Li</Authors>
     <PackageProjectUrl>https://github.com/oldrev/Sandwych.QuickGraph</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/oldrev/Sandwych.QuickGraph/blob/master/LICENSE.md</PackageLicenseUrl>
