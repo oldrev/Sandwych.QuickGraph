@@ -61,7 +61,9 @@ namespace QuickGraph.Tests.Algorithms.Search
                 IEnumerable<TEdge> path;
                 Assert.True(recorder.TryGetPath(target, out path));
             }
+#if DEBUG
             TestConsole.WriteLine("operator max count: {0}", search.OperatorMaxCount);
+#endif
         }
 
         [Fact]
