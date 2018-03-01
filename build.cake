@@ -58,17 +58,18 @@ Task("Run-Unit-Tests")
     .IsDependentOn("Build")
     .Does(() =>
 {
+    var settings = new DotNetCoreTestSettings
+    {
+        Framework = "netcoreapp2.0",
+        NoBuild = true,
+        NoRestore = true,
+        Configuration = configuration,
+    };
+
     var projects = GetFiles("./test/**/*.Tests.csproj");
     foreach(var project in projects)
     {
-        // .NET Core
-        DotNetCoreTest(project.ToString(), new DotNetCoreTestSettings
-        {
-            Framework = "netcoreapp2.0",
-            NoBuild = true,
-            NoRestore = true,
-            Configuration = configuration,
-        });
+        DotNetCoreTest(project.ToString(), settings);
     }
 });
 
