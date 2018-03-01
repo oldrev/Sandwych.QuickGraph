@@ -1,4 +1,9 @@
 language: csharp
+sudo: false
+dist: trusty
+osx_image: xcode8.3
+mono: none
+dotnet: 2.1.4
 os:
   - osx
   - linux
@@ -8,17 +13,14 @@ env:
     - DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
     - DOTNET_CLI_TELEMETRY_OPTOUT: 1
 
-# .NET CLI require Ubuntu 14.04
-sudo: required
-dist: trusty
 
-# .NET CLI require OSX 10.10
-osx_image: xcode8.3
-
-mono:
-  - 4.4.2
-
-dotnet: 2.1.4
+branches:
+  only:
+    - master
+    - release
+    - dev
+    - /^.*-wip$/
+    - /^(.*\/)?ci-.*$/
 
 script:
   - ./build.sh --verbosity diagnostic
