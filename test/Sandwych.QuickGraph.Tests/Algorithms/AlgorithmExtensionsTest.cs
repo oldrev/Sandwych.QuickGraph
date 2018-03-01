@@ -26,14 +26,10 @@ namespace QuickGraph.Tests.Algorithms
             Assert.Equal("A", roots[0]);
         }
 
-        [Fact(Skip = "Bad unit test")]
-        public void AllAdjacencyGraphRoots()
+        [Theory(Skip = "Bad unit test"), GraphData(Skip = "bad unit test")]
+        public void AllAdjacencyGraphRoots(AdjacencyGraph<string, Edge<string>> g)
         {
-            foreach (var graphmlFile in TestGraphFactory.GetFileNames())
-            {
-                var g = TestGraphFactory.LoadGraph(graphmlFile);
-                Roots(g);
-            }
+            Roots(g);
         }
 
         private void Roots<T>(IVertexAndEdgeListGraph<T, Edge<T>> g)

@@ -10,8 +10,8 @@ namespace QuickGraph.Algorithms.Search
     public class DepthFirstAlgorithmSearchTest
     {
         private static bool IsDescendant<TVertex>(
-            Dictionary<TVertex,TVertex> parents,
-            TVertex u, 
+            Dictionary<TVertex, TVertex> parents,
+            TVertex u,
             TVertex v)
         {
             TVertex t;
@@ -28,14 +28,13 @@ namespace QuickGraph.Algorithms.Search
             return false;
         }
 
-        [Fact]
-        public void DepthFirstSearchAll()
+        [Theory, GraphData]
+        public void DepthFirstSearchAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.DepthFirstSearch(g));
+            this.DepthFirstSearch(g);
         }
 
-        private void DepthFirstSearch<TVertex,TEdge>(IVertexListGraph<TVertex, TEdge> g)
+        private void DepthFirstSearch<TVertex, TEdge>(IVertexListGraph<TVertex, TEdge> g)
             where TEdge : IEdge<TVertex>
         {
             var parents = new Dictionary<TVertex, TVertex>();
@@ -46,43 +45,43 @@ namespace QuickGraph.Algorithms.Search
 
             dfs.StartVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.White);
+                Assert.Equal(GraphColor.White, dfs.VertexColors[args]);
                 Assert.False(parents.ContainsKey(args));
                 parents[args] = args;
             };
 
             dfs.DiscoverVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.Gray);
-                Assert.Equal(dfs.VertexColors[parents[args]], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args]);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[parents[args]]);
 
                 discoverTimes[args] = time++;
             };
 
             dfs.ExamineEdge += args =>
             {
-                Assert.Equal(dfs.VertexColors[args.Source], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args.Source]);
             };
 
             dfs.TreeEdge += args =>
             {
-                Assert.Equal(dfs.VertexColors[args.Target], GraphColor.White);
+                Assert.Equal(GraphColor.White, dfs.VertexColors[args.Target]);
                 parents[args.Target] = args.Source;
             };
 
             dfs.BackEdge += args =>
             {
-                Assert.Equal(dfs.VertexColors[args.Target], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args.Target]);
             };
 
             dfs.ForwardOrCrossEdge += args =>
             {
-                Assert.Equal(dfs.VertexColors[args.Target], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[args.Target]);
             };
 
             dfs.FinishVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[args]);
                 finishTimes[args] = time++;
             };
 
@@ -93,7 +92,7 @@ namespace QuickGraph.Algorithms.Search
             foreach (var v in g.Vertices)
             {
                 Assert.True(dfs.VertexColors.ContainsKey(v));
-                Assert.Equal(dfs.VertexColors[v], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[v]);
             }
 
             foreach (var u in g.Vertices)

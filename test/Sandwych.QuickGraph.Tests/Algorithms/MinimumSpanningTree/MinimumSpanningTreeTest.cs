@@ -18,11 +18,10 @@ namespace QuickGraph.Tests.Algorithms.MinimumSpanningTree
 {
     public class MinimumSpanningTreeTest
     {
-        [Fact]
-        public void KruskalMinimumSpanningTreeAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void KruskalMinimumSpanningTreeAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
-                Kruskal(g));
+            Kruskal(g);
         }
 
         private void Kruskal<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)
@@ -36,11 +35,10 @@ namespace QuickGraph.Tests.Algorithms.MinimumSpanningTree
             AssertMinimumSpanningTree<TVertex, TEdge>(g, kruskal);
         }
 
-        [Fact]
-        public void PrimMinimumSpanningTreeAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void PrimMinimumSpanningTreeAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
-                Prim(g));
+            Prim(g);
         }
 
         private void Prim<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)
@@ -106,11 +104,10 @@ namespace QuickGraph.Tests.Algorithms.MinimumSpanningTree
 
         }
 
-        [Fact]
-        public void PrimKruskalMinimumSpanningTreeAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void PrimKruskalMinimumSpanningTreeAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
-                this.CompareRoot(g));
+            this.CompareRoot(g);
         }
 
         private double CompareRoot<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)

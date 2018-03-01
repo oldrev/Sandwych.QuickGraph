@@ -10,8 +10,8 @@ namespace QuickGraph.Algorithms.Search
     public class UndirectedDepthFirstAlgorithmSearchTest
     {
         private static bool IsDescendant<TVertex>(
-            Dictionary<TVertex,TVertex> parents,
-            TVertex u, 
+            Dictionary<TVertex, TVertex> parents,
+            TVertex u,
             TVertex v)
         {
             TVertex t;
@@ -28,14 +28,13 @@ namespace QuickGraph.Algorithms.Search
             return false;
         }
 
-        [Fact]
-        public void UndirectedDepthFirstSearchAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void UndirectedDepthFirstSearchAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
-                this.UndirectedDepthFirstSearch(g));
+            this.UndirectedDepthFirstSearch(g);
         }
 
-        private void UndirectedDepthFirstSearch<TVertex,TEdge>(IUndirectedGraph<TVertex, TEdge> g)
+        private void UndirectedDepthFirstSearch<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)
             where TEdge : IEdge<TVertex>
         {
             var parents = new Dictionary<TVertex, TVertex>();

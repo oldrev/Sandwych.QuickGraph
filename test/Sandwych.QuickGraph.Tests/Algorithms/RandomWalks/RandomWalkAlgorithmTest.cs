@@ -9,11 +9,10 @@ namespace QuickGraph.Algorithms.RandomWalks
 {
     public class RandomWalkAlgorithmTest
     {
-        [Fact]
-        public void RoundRobinAll()
+        [Theory, GraphData]
+        public void RoundRobinAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.RoundRobinTest(g));
+            this.RoundRobinTest(g);
         }
 
         private void RoundRobinTest<TVertex, TEdge>(IVertexListGraph<TVertex, TEdge> g)
@@ -44,7 +43,7 @@ namespace QuickGraph.Algorithms.RandomWalks
                 walker.EdgeChain = new NormalizedMarkovEdgeChain<TVertex, TEdge>();
 
                 var vis = new EdgeRecorderObserver<TVertex, TEdge>();
-                using(vis.Attach(walker))
+                using (vis.Attach(walker))
                     walker.Generate(root);
             }
         }

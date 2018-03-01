@@ -9,14 +9,11 @@ namespace QuickGraph.Algorithms.Search
 {
     public class BreadthFirstAlgorithmSearchTest
     {
-        [Fact]
-        public void BreadthFirstSearchAll()
+        [Theory, GraphData]
+        public void BreadthFirstSearchAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                {
-                    foreach (var v in g.Vertices)
-                        RunBfs(g, v);
-                });
+            foreach (var v in g.Vertices)
+                RunBfs(g, v);
         }
 
         private void RunBfs<TVertex, TEdge>(IVertexAndEdgeListGraph<TVertex, TEdge> g, TVertex sourceVertex)
@@ -30,19 +27,19 @@ namespace QuickGraph.Algorithms.Search
 
             algo.InitializeVertex += u =>
             {
-                Assert.Equal(algo.VertexColors[u], GraphColor.White);
+                Assert.Equal(GraphColor.White, algo.VertexColors[u]);
             };
 
             algo.DiscoverVertex += u =>
             {
-                Assert.Equal(algo.VertexColors[u], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, algo.VertexColors[u]);
                 if (u.Equals(sourceVertex))
                     currentVertex = sourceVertex;
                 else
                 {
                     if (currentVertex.GetType().IsClass)
                     {
-                        Assert.NotNull(currentVertex);
+                        Assert.NotNull(currentVertex as object);
                     }
                     Assert.Equal(parents[u], currentVertex);
                     Assert.Equal(distances[u], currentDistance + 1);

@@ -9,14 +9,11 @@ namespace QuickGraph.Algorithms.ShortestPath
 {
     public class AStartShortestPathAlgorithmTest
     {
-        [Fact]
-        public void AStartAll()
+        [Theory, GraphData]
+        public void AStartAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                {
-                    foreach (var root in g.Vertices)
-                        this.AStar(g, root);
-                });
+            foreach (var root in g.Vertices)
+                this.AStar(g, root);
         }
 
         private void AStar<TVertex, TEdge>(IVertexAndEdgeListGraph<TVertex, TEdge> g, TVertex root)
@@ -55,7 +52,7 @@ namespace QuickGraph.Algorithms.ShortestPath
                 double vd, vp;
                 bool found;
                 Assert.Equal(
-                    found = algo.TryGetDistance(v, out vd), 
+                    found = algo.TryGetDistance(v, out vd),
                     algo.TryGetDistance(predecessor.Source, out vp)
                     );
             }

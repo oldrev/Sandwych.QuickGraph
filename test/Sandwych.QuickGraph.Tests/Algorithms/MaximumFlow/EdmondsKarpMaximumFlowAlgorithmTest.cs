@@ -7,14 +7,11 @@ namespace QuickGraph.Tests.Algorithms.MaximumFlow
 {
     public class EdmondsKarpMaximumFlowAlgorithmTest
     {
-        [Fact]
-        public void EdmondsKarpMaxFlowAll()
+        [Theory, GraphData]
+        public void EdmondsKarpMaxFlowAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-            {
-                if (g.VertexCount > 0)
-                    this.EdmondsKarpMaxFlow(g, (source, target) => new Edge<string>(source, target));
-            });
+            if (g.VertexCount > 0)
+                this.EdmondsKarpMaxFlow(g, (source, target) => new Edge<string>(source, target));
         }
 
 

@@ -9,14 +9,13 @@ namespace QuickGraph.Algorithms
 {
     public class TopologicalSortAlgorithmTest
     {
-        [Fact]
-        public void TopologicalSortAll()
+        [Theory, GraphData]
+        public void TopologicalSortAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetAdjacencyGraphs())
-                this.SortCyclic(g);
+            this.SortCyclic(g);
         }
 
-        private void SortCyclic<TVertex,TEdge>(
+        private void SortCyclic<TVertex, TEdge>(
             IVertexListGraph<TVertex, TEdge> g)
             where TEdge : IEdge<TVertex>
         {
@@ -79,8 +78,8 @@ namespace QuickGraph.Algorithms
             var t = new Letter('t');
             var v = new Letter('v');
 
-            graph.AddVertexRange(new List<Letter> {e1,e2,s,i1,i2,n,t,v});
-            
+            graph.AddVertexRange(new List<Letter> { e1, e2, s, i1, i2, n, t, v });
+
             graph.AddEdge(new Edge<Letter>(e1, s));
             graph.AddEdge(new Edge<Letter>(i1, n));
             graph.AddEdge(new Edge<Letter>(i1, i2));

@@ -8,11 +8,10 @@ namespace QuickGraph.Algorithms.MaximumFlow
 {
     public class AllVerticesGraphAugmentorAlgorithmTest
     {
-        [Fact]
-        public void AugmentAll()
+        [Theory, GraphData]
+        public void AugmentAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.Augment(g));
+            this.Augment(g);
         }
 
         private void Augment(

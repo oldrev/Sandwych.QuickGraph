@@ -95,35 +95,29 @@ namespace QuickGraph.Tests.Algorithms.ShortestPath
             var g = BoostFloydWarshallTest.CreateGraph(distances);
             this.Compare(g, e => distances[e],
                 (G, d) => new DijkstraShortestPathAlgorithm<char, Edge<char>>(G, d)
-                );
+            );
         }
 
-        [Fact]
-        public void FloydVsBellmannGraphML()
+        [Theory, GraphData]
+        public void FloydVsBellmannGraphML(AdjacencyGraph<string, Edge<string>> g)
         {
             Func<Edge<string>, double> distances = e => 1;
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                {
-                    this.Compare<string, Edge<string>, IVertexAndEdgeListGraph<string, Edge<string>>>(
-                        g,
-                        distances,
-                        (G, d) => new BellmanFordShortestPathAlgorithm<string, Edge<string>>(G, d)
-                        );
-                });
+            this.Compare<string, Edge<string>, IVertexAndEdgeListGraph<string, Edge<string>>>(
+                g,
+                distances,
+                (G, d) => new BellmanFordShortestPathAlgorithm<string, Edge<string>>(G, d)
+            );
         }
 
-        [Fact]
-        public void FloydVsDijkstraGraphML()
+        [Theory, GraphData]
+        public void FloydVsDijkstraGraphML(AdjacencyGraph<string, Edge<string>> g)
         {
             Func<Edge<string>, double> distances = e => 1;
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                {
-                    this.Compare<string, Edge<string>, IVertexListGraph<string, Edge<string>>>(
-                        g,
-                        distances,
-                        (G, d) => new DijkstraShortestPathAlgorithm<string, Edge<string>>(G, d)
-                        );
-                });
+            this.Compare<string, Edge<string>, IVertexListGraph<string, Edge<string>>>(
+                g,
+                distances,
+                (G, d) => new DijkstraShortestPathAlgorithm<string, Edge<string>>(G, d)
+            );
         }
 
         void Compare<TVertex, TEdge, TGraph>(

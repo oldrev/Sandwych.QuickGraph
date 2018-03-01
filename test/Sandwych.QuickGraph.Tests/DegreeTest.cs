@@ -8,11 +8,10 @@ namespace QuickGraph.Tests
 {
     public class DegreeTest
     {
-        [Fact]
-        public void DegreeSumEqualsTwiceEdgeCountAll()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void DegreeSumEqualsTwiceEdgeCountAll(BidirectionalGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetBidirectionalGraphs())
-                this.DegreeSumEqualsTwiceEdgeCount(g);
+            this.DegreeSumEqualsTwiceEdgeCount(g);
         }
 
         private void DegreeSumEqualsTwiceEdgeCount<TVertex, TEdge>(
@@ -27,14 +26,13 @@ namespace QuickGraph.Tests
             Assert.Equal(edgeCount * 2, degCount);
         }
 
-        [Fact]
-        public void InDegreeSumEqualsEdgeCountAll()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void InDegreeSumEqualsEdgeCountAll(BidirectionalGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetBidirectionalGraphs())
-                this.InDegreeSumEqualsEdgeCount(g);
+            this.InDegreeSumEqualsEdgeCount(g);
         }
 
-        private void InDegreeSumEqualsEdgeCount<TVertex,TEdge>(
+        private void InDegreeSumEqualsEdgeCount<TVertex, TEdge>(
              IBidirectionalGraph<TVertex, TEdge> graph)
             where TEdge : IEdge<TVertex>
         {
@@ -46,14 +44,13 @@ namespace QuickGraph.Tests
             Assert.Equal(edgeCount, degCount);
         }
 
-        [Fact]
-        public void OutDegreeSumEqualsEdgeCountAll()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void OutDegreeSumEqualsEdgeCountAll(BidirectionalGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetBidirectionalGraphs())
-                this.OutDegreeSumEqualsEdgeCount(g);
+            this.OutDegreeSumEqualsEdgeCount(g);
         }
 
-        private void OutDegreeSumEqualsEdgeCount<TVertex,TEdge>(
+        private void OutDegreeSumEqualsEdgeCount<TVertex, TEdge>(
             IBidirectionalGraph<TVertex, TEdge> graph)
             where TEdge : IEdge<TVertex>
         {

@@ -9,13 +9,12 @@ namespace QuickGraph.Algorithms
 {
     public class EulerianTrailAlgorithmTest
     {
-        [Fact(Skip = "Too slow")]
-        public void EulerianTrailAll()
+        [Theory]
+        [GraphData(FileName = "g.80.6.graphml")]
+        [GraphData(FileName = "g.81.16.graphml")]
+        public void EulerianTrailAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-            {
-                this.ComputeTrail(g, (s, t) => new Edge<string>(s, t));
-            });
+            this.ComputeTrail(g, (s, t) => new Edge<string>(s, t));
         }
 
         private void ComputeTrail<TVertex, TEdge>(

@@ -28,11 +28,10 @@ namespace QuickGraph.Tests.Algorithms.Search
             RunSearch(g);
         }
 
-        [Fact]
-        public void BestFirstFrontierSearchAllGraphs()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void BestFirstFrontierSearchAllGraphs(BidirectionalGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetBidirectionalGraphs(), g =>
-                RunSearch(g));
+            RunSearch(g);
         }
 
         private void RunSearch<TVertex, TEdge>(IBidirectionalGraph<TVertex, TEdge> g)
@@ -66,18 +65,15 @@ namespace QuickGraph.Tests.Algorithms.Search
 #endif
         }
 
-        [Fact]
-        public void CompareBestFirstFrontierSearchAllGraphs()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void CompareBestFirstFrontierSearchAllGraphs(BidirectionalGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetBidirectionalGraphs(), g =>
-            {
-                if (g.VertexCount == 0) return;
+            if (g.VertexCount == 0) return;
 
-                var root = g.Vertices.First();
-                foreach (var v in g.Vertices)
-                    if (!root.Equals(v))
-                        CompareSearch(g, root, v);
-            });
+            var root = g.Vertices.First();
+            foreach (var v in g.Vertices)
+                if (!root.Equals(v))
+                    CompareSearch(g, root, v);
         }
 
         private void CompareSearch<TVertex, TEdge>(

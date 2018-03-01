@@ -9,14 +9,11 @@ namespace QuickGraph.Algorithms.Search
 {
     public class UndirectedBreadthFirstAlgorithmSearchTest
     {
-        [Fact]
-        public void UndirectedBreadthFirstSearchAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void UndirectedBreadthFirstSearchAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
-                {
-                    foreach (var v in g.Vertices)
-                        RunBfs(g, v);
-                });
+            foreach (var v in g.Vertices)
+                RunBfs(g, v);
         }
 
         private void RunBfs<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g, TVertex sourceVertex)
@@ -30,17 +27,17 @@ namespace QuickGraph.Algorithms.Search
 
             algo.InitializeVertex += u =>
             {
-                Assert.Equal(algo.VertexColors[u], GraphColor.White);
+                Assert.Equal(GraphColor.White, algo.VertexColors[u]);
             };
 
             algo.DiscoverVertex += u =>
             {
-                Assert.Equal(algo.VertexColors[u], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, algo.VertexColors[u]);
                 if (u.Equals(sourceVertex))
                     currentVertex = sourceVertex;
                 else
                 {
-                    Assert.NotNull(currentVertex);
+                    Assert.True(currentVertex != null);
                     Assert.Equal(parents[u], currentVertex);
                     Assert.Equal(distances[u], currentDistance + 1);
                     Assert.Equal(distances[u], distances[parents[u]] + 1);
@@ -76,7 +73,7 @@ namespace QuickGraph.Algorithms.Search
                     v = temp;
                 }
 
-                Assert.Equal(algo.VertexColors[v], GraphColor.White);
+                Assert.Equal(GraphColor.White, algo.VertexColors[v]);
                 Assert.Equal(distances[u], currentDistance);
                 parents[v] = u;
                 distances[v] = distances[u] + 1;
@@ -124,7 +121,7 @@ namespace QuickGraph.Algorithms.Search
 
             algo.FinishVertex += args =>
             {
-                Assert.Equal(algo.VertexColors[args], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, algo.VertexColors[args]);
             };
 
 

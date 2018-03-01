@@ -10,11 +10,10 @@ namespace QuickGraph.Algorithms.RandomWalks
 {
     public class EdgeChainTest
     {
-        [Fact]
-        public void GenerateAll()
+        [Theory, GraphData]
+        public void GenerateAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.Generate(g));
+            this.Generate(g);
         }
 
         private void Generate<TVertex, TEdge>(IVertexListGraph<TVertex, TEdge> g)

@@ -8,19 +8,16 @@ namespace QuickGraph.Algorithms.ShortestPath
 {
     public class UndirectedDijkstraShortestPathAlgorithmTest2
     {
-        [Fact]
-        public void UndirectedDijkstraAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void UndirectedDijkstraAll(UndirectedGraph<string, Edge<string>> g)
         {
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
+            int cut = 0;
+            foreach (var root in g.Vertices)
             {
-                int cut = 0;
-                foreach (var root in g.Vertices)
-                {
-                    if (cut++ > 10)
-                        break;
-                    this.UndirectedDijkstra(g, root);
-                }
-            });
+                if (cut++ > 10)
+                    break;
+                this.UndirectedDijkstra(g, root);
+            }
         }
 
         private void UndirectedDijkstra<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g, TVertex root)

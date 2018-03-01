@@ -14,26 +14,23 @@ namespace QuickGraph.Tests.Algorithms.RankedShortestPath
 {
     public class HoffmanPavleyRankedShortestPathAlgorithmTest
     {
-        [Fact]
-        public void HoffmanPavleyRankedShortestPathAll()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void HoffmanPavleyRankedShortestPathAll(BidirectionalGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetBidirectionalGraphs(), g =>
-            {
-                if (g.VertexCount == 0) return;
+            if (g.VertexCount == 0) return;
 
-                var weights = new Dictionary<Edge<string>, double>();
-                foreach (var e in g.Edges)
-                    weights.Add(e, g.OutDegree(e.Source) + 1);
+            var weights = new Dictionary<Edge<string>, double>();
+            foreach (var e in g.Edges)
+                weights.Add(e, g.OutDegree(e.Source) + 1);
 
-                this.HoffmanPavleyRankedShortestPath(
-                    g,
-                    weights,
-                    Enumerable.First(g.Vertices),
-                    Enumerable.Last(g.Vertices),
-                    g.VertexCount
-                    );
+            this.HoffmanPavleyRankedShortestPath(
+                g,
+                weights,
+                Enumerable.First(g.Vertices),
+                Enumerable.Last(g.Vertices),
+                g.VertexCount
+                );
 
-            });
         }
 
         [Fact]

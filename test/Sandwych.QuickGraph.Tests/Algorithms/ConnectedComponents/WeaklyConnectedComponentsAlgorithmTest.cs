@@ -11,18 +11,17 @@ namespace QuickGraph.Algorithms.ConnectedComponents
 {
     public class WeaklyConnectedComponentsAlgorithmTest
     {
-        [Fact]
-        public void WeaklyConnectedComponentsAll()
+        [Theory, GraphData]
+        public void WeaklyConnectedComponentsAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.Compute(g));
+            this.Compute(g);
         }
 
-        private void Compute<TVertex,TEdge>(IVertexListGraph<TVertex, TEdge> g)
+        private void Compute<TVertex, TEdge>(IVertexListGraph<TVertex, TEdge> g)
             where TEdge : IEdge<TVertex>
         {
-            var dfs = 
-                new WeaklyConnectedComponentsAlgorithm<TVertex,TEdge>(g);
+            var dfs =
+                new WeaklyConnectedComponentsAlgorithm<TVertex, TEdge>(g);
             dfs.Compute();
             if (g.VertexCount == 0)
             {
@@ -32,13 +31,13 @@ namespace QuickGraph.Algorithms.ConnectedComponents
 
             Assert.True(0 < dfs.ComponentCount);
             Assert.True(dfs.ComponentCount <= g.VertexCount);
-            foreach(var kv in dfs.Components)
+            foreach (var kv in dfs.Components)
             {
                 Assert.True(0 <= kv.Value);
                 Assert.True(kv.Value < dfs.ComponentCount);
             }
 
-            foreach(var vertex in g.Vertices)
+            foreach (var vertex in g.Vertices)
                 foreach (var edge in g.OutEdges(vertex))
                 {
                     Assert.Equal(dfs.Components[edge.Source], dfs.Components[edge.Target]);

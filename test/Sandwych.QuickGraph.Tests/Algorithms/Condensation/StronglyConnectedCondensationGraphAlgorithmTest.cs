@@ -10,11 +10,10 @@ namespace QuickGraph.Algorithms.Condensation
 {
     public class StronglyConnectedCondensationGraphAlgorithmTest
     {
-        [Fact]
-        public void StronglyConnectedCondensateAll()
+        [Theory, GraphData]
+        public void StronglyConnectedCondensateAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.StronglyConnectedCondensate(g));
+            this.StronglyConnectedCondensate(g);
         }
 
         private void StronglyConnectedCondensate<TVertex, TEdge>(

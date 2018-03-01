@@ -8,14 +8,13 @@ namespace QuickGraph.Algorithms.Search
 {
     public class BidirectionalDepthFirstSearchAlgorithmTest
     {
-        [Fact]
-        public void ComputeAll()
+        [Theory, GraphData(Type = GraphType.BidirectionalGraph)]
+        public void ComputeAll(BidirectionalGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetBidirectionalGraphs(), g =>
-                this.Compute(g));
+            this.Compute(g);
         }
 
-        private void Compute<TVertex,TEdge>(IBidirectionalGraph<TVertex, TEdge> g)
+        private void Compute<TVertex, TEdge>(IBidirectionalGraph<TVertex, TEdge> g)
             where TEdge : IEdge<TVertex>
         {
             var dfs = new BidirectionalDepthFirstSearchAlgorithm<TVertex, TEdge>(g);

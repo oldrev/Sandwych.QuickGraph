@@ -8,11 +8,10 @@ namespace QuickGraph.Algorithms
 {
     public class UndirectedFirstTopologicalSortAlgorithmTest
     {
-        [Fact]
-        public void UndirectedFirstTopologicalSortAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void UndirectedFirstTopologicalSortAll(UndirectedGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetUndirectedGraphs())
-                this.Compute(g);
+            this.Compute(g);
         }
 
         private void Compute<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)

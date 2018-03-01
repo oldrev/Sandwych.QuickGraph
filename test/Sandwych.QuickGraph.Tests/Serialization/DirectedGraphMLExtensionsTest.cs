@@ -16,14 +16,14 @@ namespace QuickGraph.Tests.Serialization
         [Fact]
         public void SimpleGraph()
         {
-            int[][] edges = { new int[]{ 1, 2, 3 }, 
+            int[][] edges = { new int[]{ 1, 2, 3 },
                               new int[]{ 2, 3, 1 } };
             edges.ToAdjacencyGraph()
                 .ToDirectedGraphML()
                 .WriteXml("simple.dgml");
 
             if (Debugger.IsAttached)
-            { 
+            {
                 Process.Start("simple.dgml");
             }
 
@@ -32,16 +32,13 @@ namespace QuickGraph.Tests.Serialization
                 .WriteXml(Console.Out);
         }
 
-        [Fact]
-        public void ToDirectedGraphML()
+        [Theory, GraphData]
+        public void ToDirectedGraphML(AdjacencyGraph<string, Edge<string>> g)
         {
-            foreach (var g in TestGraphFactory.GetAdjacencyGraphs())
-            {
-                var dg = g.ToDirectedGraphML();
-                Assert.NotNull(g);
-                Assert.Equal(dg.Nodes.Length, g.VertexCount);
-                Assert.Equal(dg.Links.Length, g.EdgeCount);
-            }
+            var dg = g.ToDirectedGraphML();
+            Assert.NotNull(g);
+            Assert.Equal(dg.Nodes.Length, g.VertexCount);
+            Assert.Equal(dg.Links.Length, g.EdgeCount);
         }
     }
 }

@@ -7,11 +7,10 @@ namespace QuickGraph.Algorithms
 {
     public class SourceFirstTopologicalSortAlgorithmTest
     {
-        [Fact]
-        public void SortAll()
+        [Theory, GraphData]
+        public void SortAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                this.Sort(g));
+            this.Sort(g);
         }
 
         private void Sort<TVertex, TEdge>(IVertexAndEdgeListGraph<TVertex, TEdge> g)

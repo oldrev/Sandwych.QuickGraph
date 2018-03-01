@@ -12,17 +12,14 @@ namespace QuickGraph.Algorithms.ConnectedComponents
 {
     public class ConnectedComponentsAlgorithmTest
     {
-        [Fact]
-        public void ConnectedComponentsAll()
+        [Theory, GraphData(Type = GraphType.UndirectedGraph)]
+        public void ConnectedComponentsAll(UndirectedGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetUndirectedGraphs(), g =>
+            while (g.EdgeCount > 0)
             {
-                while (g.EdgeCount > 0)
-                {
-                    this.Compute(g);
-                    g.RemoveEdge(Enumerable.First(g.Edges));
-                }
-            });
+                this.Compute(g);
+                g.RemoveEdge(Enumerable.First(g.Edges));
+            }
         }
 
         private void Compute<TVertex, TEdge>(IUndirectedGraph<TVertex, TEdge> g)

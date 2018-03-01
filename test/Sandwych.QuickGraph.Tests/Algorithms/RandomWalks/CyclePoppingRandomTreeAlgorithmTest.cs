@@ -9,17 +9,14 @@ namespace QuickGraph.Algorithms.RandomWalks
 {
     public class CyclePoppingRandomTreeAlgorithmTest
     {
-        [Fact]
-        public void CyclePoppingRandomTreeAll()
+        [Theory, GraphData]
+        public void CyclePoppingRandomTreeAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
+            foreach (var v in g.Vertices)
             {
-                foreach (var v in g.Vertices)
-                {
-                    var target = new CyclePoppingRandomTreeAlgorithm<string, Edge<string>>(g);
-                    target.Compute(v);
-                }
-            });
+                var target = new CyclePoppingRandomTreeAlgorithm<string, Edge<string>>(g);
+                target.Compute(v);
+            }
         }
 
         [Fact]
@@ -30,18 +27,18 @@ namespace QuickGraph.Algorithms.RandomWalks
 
             // adding vertices		    
             for (int i = 0; i < 3; ++i)
-                for(int j = 0;j<3;++j)
+                for (int j = 0; j < 3; ++j)
                     graph.AddVertex(i * 3 + j);
 
             // adding Width edges			    
             for (int i = 0; i < 3; ++i)
-                for(int j = 0; j < 2;++j)
-                graph.AddEdge(new SEquatableEdge<int>(i * 3 +j, i * 3 + j + 1));
+                for (int j = 0; j < 2; ++j)
+                    graph.AddEdge(new SEquatableEdge<int>(i * 3 + j, i * 3 + j + 1));
 
             // adding Length edges			    
             for (int i = 0; i < 2; ++i)
-                for(int j = 0; j < 3;++j)
-                graph.AddEdge(new SEquatableEdge<int>(i * 3 + j, (i+1) * 3 + j));
+                for (int j = 0; j < 3; ++j)
+                    graph.AddEdge(new SEquatableEdge<int>(i * 3 + j, (i + 1) * 3 + j));
 
             // create cross edges 
             foreach (var e in graph.Edges)
@@ -55,7 +52,7 @@ namespace QuickGraph.Algorithms.RandomWalks
 
             var target = new CyclePoppingRandomTreeAlgorithm<int, SEquatableEdge<int>>(graph);
             target.Compute(2);
-            foreach(var kv in target.Successors)
+            foreach (var kv in target.Successors)
                 TestConsole.WriteLine("{0}: {1}", kv.Key, kv.Value);
         }
 

@@ -34,14 +34,11 @@ namespace QuickGraph.Algorithms.ShortestPath
             }
         }
 
-        [Fact]
-        public void DagShortestPathAll()
+        [Theory, GraphData]
+        public void DagShortestPathAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-            {
-                this.Compute(g);
-                this.ComputeCriticalPath(g);
-            });
+            this.Compute(g);
+            this.ComputeCriticalPath(g);
         }
 
         private void ComputeCriticalPath<TVertex, TEdge>(

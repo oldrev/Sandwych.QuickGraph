@@ -9,10 +9,9 @@ namespace QuickGraph.Algorithms.ShortestPath
 {
     public class DijkstraShortestPathAlgorithmTest
     {
-        [Fact]
-        public void Repro12359()
+        [Theory, GraphData(FileName = "repro12359.graphml")]
+        public void Repro12359(AdjacencyGraph<string, Edge<string>> g)
         {
-            var g = TestGraphFactory.LoadGraph("graphml/repro12359.graphml");
             int i = 0;
             foreach (var v in g.Vertices)
             {
@@ -21,14 +20,13 @@ namespace QuickGraph.Algorithms.ShortestPath
             }
         }
 
-        [Fact]
-        public void DijkstraAll()
+        [Theory, GraphData]
+        public void DijkstraAll(AdjacencyGraph<string, Edge<string>> g)
         {
-            System.Threading.Tasks.Parallel.ForEach(TestGraphFactory.GetAdjacencyGraphs(), g =>
-                {
-                    foreach (var root in g.Vertices)
-                        this.Dijkstra(g, root);
-                });
+            foreach (var root in g.Vertices)
+            {
+                this.Dijkstra(g, root);
+            }
         }
 
         private void Dijkstra<TVertex, TEdge>(IVertexAndEdgeListGraph<TVertex, TEdge> g, TVertex root)
