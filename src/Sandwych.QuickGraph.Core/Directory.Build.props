@@ -6,8 +6,6 @@
     <Summary></Summary>
     <Description>Sandwych.QuickGraph is a port of the awesome QuickGraph to .NET Standard, it provides generic directed/undirected graph datastructures and algorithms for .NET. </Description>
     <PackageTags>graph;topologic;quickgraph</PackageTags>
-    <VersionPrefix>1.0.0</VersionPrefix>
-    <VersionSuffix>beta</VersionSuffix>
   </PropertyGroup>
 
   <Import Project="../../Shared.props" />
