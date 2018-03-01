@@ -1,0 +1,29 @@
+language: csharp
+os:
+  - osx
+  - linux
+
+env:
+  global:
+    - DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+    - DOTNET_CLI_TELEMETRY_OPTOUT: 1
+
+# .NET CLI require Ubuntu 14.04
+sudo: required
+dist: trusty
+
+# .NET CLI require OSX 10.10
+osx_image: xcode8.3
+
+mono:
+  - 4.4.2
+
+dotnet: 2.1.4
+
+script:
+  - ./build.sh --verbosity diagnostic
+
+cache:
+  directories:
+    - .packages
+    - tools

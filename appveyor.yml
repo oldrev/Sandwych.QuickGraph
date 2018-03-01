@@ -30,6 +30,6 @@ deploy:
     artifact: /.*\.nupkg/  
 
 # Build cache
-#cache:
-#  - tools -> build.cake
-#  - packages -> build.cake
+cache:
+  - tools -> build.cake
+  - packages -> build.cake
