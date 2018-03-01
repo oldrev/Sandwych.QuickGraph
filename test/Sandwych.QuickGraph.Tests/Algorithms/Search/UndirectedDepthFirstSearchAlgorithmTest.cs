@@ -45,45 +45,45 @@ namespace QuickGraph.Algorithms.Search
 
             dfs.StartVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.White);
+                Assert.Equal(GraphColor.White, dfs.VertexColors[args]);
                 Assert.False(parents.ContainsKey(args));
                 parents[args] = args;
             };
 
             dfs.DiscoverVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.Gray);
-                Assert.Equal(dfs.VertexColors[parents[args]], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args]);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[parents[args]]);
 
                 discoverTimes[args] = time++;
             };
 
             dfs.ExamineEdge += (sender, args) =>
             {
-                Assert.Equal(dfs.VertexColors[args.Source], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args.Source]);
             };
 
             dfs.TreeEdge += (sender, args) =>
             {
                 var source = args.Source;
                 var target = args.Target;
-                Assert.Equal(dfs.VertexColors[target], GraphColor.White);
+                Assert.Equal(GraphColor.White, dfs.VertexColors[target]);
                 parents[target] = source;
             };
 
             dfs.BackEdge += (sender, args) =>
             {
-                Assert.Equal(dfs.VertexColors[args.Target], GraphColor.Gray);
+                Assert.Equal(GraphColor.Gray, dfs.VertexColors[args.Target]);
             };
 
             dfs.ForwardOrCrossEdge += (sender, args) =>
             {
-                Assert.Equal(dfs.VertexColors[args.Target], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[args.Target]);
             };
 
             dfs.FinishVertex += args =>
             {
-                Assert.Equal(dfs.VertexColors[args], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[args]);
                 finishTimes[args] = time++;
             };
 
@@ -94,7 +94,7 @@ namespace QuickGraph.Algorithms.Search
             foreach (var v in g.Vertices)
             {
                 Assert.True(dfs.VertexColors.ContainsKey(v));
-                Assert.Equal(dfs.VertexColors[v], GraphColor.Black);
+                Assert.Equal(GraphColor.Black, dfs.VertexColors[v]);
             }
 
             foreach (var u in g.Vertices)
