@@ -2,6 +2,7 @@
 
 [![NuGet Stats](https://img.shields.io/nuget/v/Sandwych.QuickGraph.Core.svg)](https://www.nuget.org/packages/Sandwych.QuickGraph.Core) 
 [![Build status](https://ci.appveyor.com/api/projects/status/bot7355f3eqedefj?svg=true)](https://ci.appveyor.com/project/oldrev/sandwych-quickgraph)
+[![Build Status](https://travis-ci.org/oldrev/Sandwych.QuickGraph.svg?branch=master)](https://travis-ci.org/oldrev/Sandwych.QuickGraph)
 
 Generic Graph Data Structures and Algorithms for .NET
 
