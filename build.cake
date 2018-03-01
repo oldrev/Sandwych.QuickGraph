@@ -1,9 +1,11 @@
-#addin nuget:?package=Cake.DocFx&version=0.5.0#
-#tool "docfx.console"
+//#addin nuget:?package=Cake.DocFx&version=0.5.0
+//#tool "docfx.console"
 
 var solutionFile = "Sandwych.QuickGraph.sln";
 
 var target = Argument("target", "Default");
+var configuration = Argument("configuration", "Release");
+
 
 Task("Restore-NuGet-Packages")
     .Does(() =>
@@ -24,6 +26,7 @@ Task("Build")
     DotNetCoreBuild(path.FullPath, new DotNetCoreBuildSettings()
     {
         NoRestore = true,
+        Configuration = configuration,
     });
 });
 
@@ -41,6 +44,7 @@ Task("Run-Unit-Tests")
             Framework = "netcoreapp2.0",
             NoBuild = true,
             NoRestore = true,
+            Configuration = configuration,
         });
     }
 });
@@ -64,11 +68,13 @@ Task("Create-NuGet-Packages")
             NoBuild = true,
             NoRestore = true,
             IncludeSymbols = false,
+            Configuration = configuration,
         });
     }
 });
 
 
+/*
 Task("Generate-Docs").Does(() => {
     DocFxBuild("./docs/docfx.json");
 });
@@ -79,6 +85,7 @@ Task("View-Docs").Does(() => {
         Serve = true,
     });
 });
+*/
 
 
 Task("Travis")
@@ -95,8 +102,7 @@ Task("Appveyor-Test")
 
 Task("Default")
     .IsDependentOn("Run-Unit-Tests")
-    .Does(() =>
-{
+    .Does(() => {
     Information("Executing the default task...");
 });
 
