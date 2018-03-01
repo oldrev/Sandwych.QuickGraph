@@ -22,7 +22,7 @@ branches:
     - /^(.*\/)?ci-.*$/
 
 script:
-  - ./build.sh "-target Travis"
+  - ./build.sh "-target=Travis"
 
 cache:
   directories:

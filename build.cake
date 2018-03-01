@@ -24,23 +24,11 @@ Task("Build")
     // Build the solution.
     var path = MakeAbsolute(new DirectoryPath(solutionFile));
 
-    if (IsRunningOnWindows())
+    DotNetCoreBuild(path.FullPath, new DotNetCoreBuildSettings()
     {
-        DotNetCoreBuild(path.FullPath, new DotNetCoreBuildSettings()
-        {
-            NoRestore = true,
-            Configuration = configuration,
-        });
-    }
-    else 
-    {
-        DotNetCoreBuild(path.FullPath, new DotNetCoreBuildSettings()
-        {
-            Framework = "netstandard2.0",
-            NoRestore = true,
-            Configuration = configuration,
-        });
-    }
+        NoRestore = true,
+        Configuration = configuration,
+    });
 
 });
 
