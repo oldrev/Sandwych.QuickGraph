@@ -28,3 +28,6 @@ cache:
   directories:
     - .packages
     - tools
+
+notifications:
+  email: false
