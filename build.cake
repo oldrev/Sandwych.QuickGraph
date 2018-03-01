@@ -1,4 +1,4 @@
-#addin "Cake.DocFx"
+#addin nuget:?package=Cake.DocFx&version=0.5.0#
 #tool "docfx.console"
 
 var solutionFile = "Sandwych.QuickGraph.sln";
