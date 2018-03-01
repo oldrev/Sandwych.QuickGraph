@@ -20,21 +20,35 @@ Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
-    var settings = new DotNetCoreBuildSettings() {
+    Information("Building Libraries...");
+    var libSettings = new DotNetCoreBuildSettings() {
         NoRestore = true,
         Configuration = configuration,
     };
 
     if(!IsRunningOnWindows()) 
     {
-        settings.Framework = "netstandard2.0";
+        libSettings.Framework = "netstandard2.0";
     }
 
-    var projects = GetFiles("./src/**/*.csproj");
-    foreach(var project in projects)
+    var libProjects = GetFiles("./src/**/*.csproj");
+    foreach(var project in libProjects)
     {
         // .NET Core
-        DotNetCoreBuild(project.ToString(), settings);
+        DotNetCoreBuild(project.ToString(), libSettings);
+    }
+
+    Information("Building Unit tests...");
+    var testSettings = new DotNetCoreBuildSettings() {
+        NoRestore = true,
+        Configuration = configuration,
+    };
+
+    var testProjects = GetFiles("./test/**/*.csproj");
+    foreach(var project in testProjects)
+    {
+        // .NET Core
+        DotNetCoreBuild(project.ToString(), testSettings);
     }
 
 });
