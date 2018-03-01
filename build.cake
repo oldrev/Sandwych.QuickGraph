@@ -6,7 +6,6 @@ var solutionFile = "Sandwych.QuickGraph.sln";
 var target = Argument("target", "Default");
 var configuration = Argument("configuration", "Release");
 
-
 Task("Restore-NuGet-Packages")
     .Does(() =>
 {
@@ -21,14 +20,22 @@ Task("Build")
     .IsDependentOn("Restore-NuGet-Packages")
     .Does(() =>
 {
-    // Build the solution.
-    var path = MakeAbsolute(new DirectoryPath(solutionFile));
-
-    DotNetCoreBuild(path.FullPath, new DotNetCoreBuildSettings()
-    {
+    var settings = new DotNetCoreBuildSettings() {
         NoRestore = true,
         Configuration = configuration,
-    });
+    };
+
+    if(!IsRunningOnWindows()) 
+    {
+        settings.Framework = "netstandard2.0";
+    }
+
+    var projects = GetFiles("./src/**/*.csproj");
+    foreach(var project in projects)
+    {
+        // .NET Core
+        DotNetCoreBuild(project.ToString(), settings);
+    }
 
 });
 
