@@ -3,7 +3,7 @@
   <PropertyGroup>
     <PackageTags>graph;topologic;quickgraph</PackageTags>
     <VersionPrefix>1.0.0</VersionPrefix>
-    <VersionSuffix>beta</VersionSuffix>
+    <VersionSuffix></VersionSuffix>
   </PropertyGroup>
 
   <Import Project="../Shared.props" />
