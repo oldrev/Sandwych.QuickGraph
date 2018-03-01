@@ -22,7 +22,7 @@ branches:
     - /^(.*\/)?ci-.*$/
 
 script:
-  - ./build.sh --verbosity diagnostic -target="Travis"
+  - ./build.sh --verbosity diagnostic -target "Travis"
 
 cache:
   directories:
