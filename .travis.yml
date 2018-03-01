@@ -1,11 +1,10 @@
 language: csharp
 sudo: false
 dist: trusty
-osx_image: xcode8.3
-mono: none
+osx_image: none
+mono: 5.10.0
 dotnet: 2.1.4
 os:
-  - osx
   - linux
 
 env:
