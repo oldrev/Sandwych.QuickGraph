@@ -4,6 +4,11 @@
     <TargetFrameworks>netstandard1.6;netstandard2.0;netstandard2.1;net45</TargetFrameworks>
     <RootNamespace>QuickGraph</RootNamespace>
     <LangVersion>latest</LangVersion>
+    <PackageId>Sandwych.QuickGraph.Core</PackageId>
+    <Title>Generic Graph Data Structures and Algorithms for .NET(.NET Standard and .NET Framework)</Title>
+    <Summary></Summary>
+    <Description>Sandwych.QuickGraph is a port of the awesome QuickGraph to .NET Standard, it provides generic directed/undirected graph datastructures and algorithms for .NET. </Description>
+    <PackageTags>graph;topologic;quickgraph</PackageTags>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
