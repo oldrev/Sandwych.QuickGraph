@@ -4,7 +4,7 @@
     <Copyright>Copyright (C) Jonathan "Peli" de Halleux</Copyright>
     <Authors>Peli de Halleux, Wei Li</Authors>
     <PackageProjectUrl>https://github.com/oldrev/Sandwych.QuickGraph</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/oldrev/Sandwych.QuickGraph/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MS-PL</PackageLicenseExpression>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <VersionSuffix Condition="'$(VersionSuffix)'!='' AND '$(BuildNumber)' != ''">$(VersionSuffix)-$(BuildNumber)</VersionSuffix>
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
@@ -17,6 +17,8 @@
     <GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
     <GenerateAssemblyVersionAttribute>false</GenerateAssemblyVersionAttribute>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(MSBuildThisFileDirectory)/Sandwych.QuickGraph.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
 </Project>
